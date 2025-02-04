@@ -1,0 +1,3 @@
+table:
+  name: runners
+  schema: public

@@ -1,0 +1,11 @@
+table:
+  name: games
+  schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - uuid
+        - name
+      filter: {}
+    comment: フロントから見えるところ
