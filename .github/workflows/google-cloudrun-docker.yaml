@@ -8,7 +8,7 @@ on:
 
 env:
   SERVICE: 'speedb-hasura-graphql-engine'
-  REPOSITORY_NAME: 'speedb_hasura'
+  REPOSITORY_NAME: 'speedb-hasura'
 
 jobs:
   deploy:
