@@ -14,3 +14,9 @@ services:
     restart: always
     ports:
       - "8080:8080"
+  gcloud:
+    image: google/cloud-sdk
+    container_name: gcloud-sdk
+    tty: true
+    volumes:
+      - ./:/app
