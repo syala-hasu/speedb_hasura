@@ -1,4 +1,4 @@
-CREATE TABLE "public"."segments" ("id" serial NOT NULL, "uuid" uuid NOT NULL DEFAULT gen_random_uuid(), "created_at" timestamptz NOT NULL DEFAULT now(), "updated_at" timestamptz NOT NULL DEFAULT now(), "run_uuid" uuid NOT NULL, "time" interval NOT NULL, "index" integer NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("run_uuid") REFERENCES "public"."runs"("uuid") ON UPDATE restrict ON DELETE restrict);
+CREATE TABLE "public"."segments" ("id" serial NOT NULL, "uid" text NOT NULL, "created_at" timestamptz NOT NULL DEFAULT now(), "updated_at" timestamptz NOT NULL DEFAULT now(), "run_uid" text NOT NULL, "name" text NOT NULL, "split_time" interval NOT NULL, "best_time" interval NOT NULL, "index" integer NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("run_uid") REFERENCES "public"."runs"("uid") ON UPDATE restrict ON DELETE restrict, UNIQUE ("uid"));
 CREATE OR REPLACE FUNCTION "public"."set_current_timestamp_updated_at"()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -15,4 +15,3 @@ FOR EACH ROW
 EXECUTE PROCEDURE "public"."set_current_timestamp_updated_at"();
 COMMENT ON TRIGGER "set_public_segments_updated_at" ON "public"."segments"
 IS 'trigger to set value of column "updated_at" to current timestamp on row update';
-CREATE EXTENSION IF NOT EXISTS pgcrypto;

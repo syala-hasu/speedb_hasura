@@ -1,3 +1,5 @@
 - "!include public_games.yaml"
+- "!include public_runners.yaml"
 - "!include public_runs.yaml"
 - "!include public_segments.yaml"
+- "!include public_users.yaml"

@@ -1,11 +1,26 @@
 table:
   name: games
   schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - name
+        - uid
+    comment: ""
 select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - name
+        - uid
+      filter: {}
+    comment: ""
   - role: user
     permission:
       columns:
-        - uuid
         - name
+        - uid
       filter: {}
-    comment: フロントから見えるところ
+    comment: ""

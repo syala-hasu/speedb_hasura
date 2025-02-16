@@ -1,4 +1,4 @@
-CREATE TABLE "public"."runs" ("id" serial NOT NULL, "uuid" uuid NOT NULL DEFAULT gen_random_uuid(), "created_at" timestamptz NOT NULL DEFAULT now(), "updated_at" timestamptz NOT NULL DEFAULT now(), "game_uuid" uuid NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("game_uuid") REFERENCES "public"."games"("uuid") ON UPDATE restrict ON DELETE restrict, UNIQUE ("uuid"));
+CREATE TABLE "public"."runs" ("id" serial NOT NULL, "uid" text NOT NULL, "created_at" timestamptz NOT NULL DEFAULT now(), "updated_at" timestamptz NOT NULL DEFAULT now(), "attempt_count" integer NOT NULL, "game_uid" text NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("game_uid") REFERENCES "public"."games"("uid") ON UPDATE restrict ON DELETE restrict, UNIQUE ("uid"));
 CREATE OR REPLACE FUNCTION "public"."set_current_timestamp_updated_at"()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -15,4 +15,3 @@ FOR EACH ROW
 EXECUTE PROCEDURE "public"."set_current_timestamp_updated_at"();
 COMMENT ON TRIGGER "set_public_runs_updated_at" ON "public"."runs"
 IS 'trigger to set value of column "updated_at" to current timestamp on row update';
-CREATE EXTENSION IF NOT EXISTS pgcrypto;

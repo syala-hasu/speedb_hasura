@@ -1,0 +1,13 @@
+table:
+  name: users
+  schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - last_login_at
+        - uid
+      filter:
+        uid:
+          _eq: X-Hasura-User-Id
+    comment: ""

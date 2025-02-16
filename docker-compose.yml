@@ -5,13 +5,12 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-      args:
-        - DB_USER=${DB_USER}
-        - DB_PASSWORD=${DB_PASS}
-        - DB_HOST=${DB_HOST}
-        - DB_DATABASE=${DB_NAME}
+    platform: linux/amd64
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: ${DATABASE_URL}
+#      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+#      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: ${HASURA_GRAPHQL_UNAUTHORIZED_ROLE}
+#      HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
     restart: always
     ports:
       - "8080:8080"
-volumes:
-  db_data:

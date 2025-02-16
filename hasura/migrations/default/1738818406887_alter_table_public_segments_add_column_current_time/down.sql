@@ -1,3 +1,4 @@
 -- Could not auto-generate a down migration.
 -- Please write an appropriate down migration for the SQL below:
--- DROP table "public"."games";
+-- alter table "public"."segments" add column "current_time" text
+--  not null default '00:00:00.000000';
