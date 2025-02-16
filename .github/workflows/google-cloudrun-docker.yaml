@@ -28,7 +28,7 @@ jobs:
         with:
           workload_identity_provider: '${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}'
           project_id: ${{ secrets.GOOGLE_PROJECT_ID }}
-          service_account: '${{secrets.GOOGLE_SERVICE_ACCOUNT}}'
+          service_account: ${{secrets.GOOGLE_SERVICE_ACCOUNT}}
 
       - name: 'Docker Auth'
         uses: 'docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567' # docker/login-action@v3
