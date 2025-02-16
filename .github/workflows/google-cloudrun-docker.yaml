@@ -27,7 +27,8 @@ jobs:
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@f112390a2df9932162083945e46d439060d66ec2'
         with:
-          service_account: ${{secrets.GOOGLE_SERVICE_ACCOUNT}}
+          project_id: ${{ secrets.GOOGLE_PROJECT_ID }}
+          service_account: '${{secrets.GOOGLE_SERVICE_ACCOUNT}}'
           workload_identity_provider: '${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}'
 
       - name: 'Docker Auth'
