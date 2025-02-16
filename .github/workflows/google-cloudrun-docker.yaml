@@ -38,7 +38,8 @@ jobs:
 
           echo "### gcloud config list ###"
           gcloud config list
-
+      - name: Validate credential file format
+        run: cat $(echo $GOOGLE_APPLICATION_CREDENTIALS)
       - name: 'Docker Auth'
         uses: 'docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567' # docker/login-action@v3
         with:
